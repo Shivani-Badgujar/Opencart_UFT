@@ -1,0 +1,166 @@
+﻿Function openURL()
+systemutil.Run(Environment("Browser_val"))
+Browser("Your Store").Navigate "https://demo.opencart.com/"
+End Function
+
+
+Function closeApp()
+	Browser("Your Store").close
+End Function
+
+Function Slideshow1()
+ wait (5)
+
+Browser("Browser").Page("Your Store").Image("iphone 6").Click
+Browser("Your Store").Page("Samsung Galaxy Tab 10.1").Sync
+If Browser("Your Store").Page("Samsung Galaxy Tab 10.1").Exist(3) Then
+    Reporter.ReportEvent micPass,"Slideshow1","Navigation Successful"
+else
+    Reporter.ReportEvent  micFail,"Slideshow1","Navigation unsuccessful"
+End If
+
+Browser("Your Store").Back
+
+
+
+End Function
+
+Function Left_RightArrow()
+wait(2)
+Browser("Your Store").Page("Your Store").WebElement("WebElement_3").Click
+wait(1)
+Browser("Your Store").Page("Your Store").WebElement("WebElement_4").Click
+
+End Function
+
+Function Featured()
+ wait(3)
+Browser("Your Store").Page("Your Store").Image("MacBook").Click
+Browser("Your Store").Page("Samsung Galaxy Tab 10.1").Sync
+
+If Browser("Your Store").Page("Samsung Galaxy Tab 10.1").Exist(3) Then
+    Reporter.ReportEvent micPass,"Featured","Featured slide1 Successful"
+else
+    Reporter.ReportEvent  micFail,"Featured","Featured slide1 unsuccessful"
+End If
+
+Browser("Your Store").Back
+wait(3)
+Browser("Your Store").Page("Your Store").Image("iPhone").Click
+Browser("Your Store").Page("Samsung Galaxy Tab 10.1").Sync
+
+If Browser("Your Store").Page("Samsung Galaxy Tab 10.1").Exist(3) Then
+    Reporter.ReportEvent micPass,"Featured","Featured slide2 Successful"
+else
+    Reporter.ReportEvent  micFail,"Featured","Featured slide2 unsuccessful"
+End If
+
+Browser("Your Store").Back
+
+
+wait(3)
+Browser("Your Store").Page("Your Store").Image("Apple Cinema 30'").Click
+Browser("Your Store").Page("Samsung Galaxy Tab 10.1").Sync
+
+If Browser("Your Store").Page("Samsung Galaxy Tab 10.1").Exist(3) Then
+    Reporter.ReportEvent micPass,"Featured","Featured slide3 Successful"
+else
+    Reporter.ReportEvent  micFail,"Featured","Featured slide3 unsuccessful"
+End If
+
+Browser("Your Store").Back
+
+
+wait(3)
+Browser("Your Store").Page("Your Store").Image("Canon EOS 5D").Click
+Browser("Your Store").Page("Samsung Galaxy Tab 10.1").Sync
+
+If Browser("Your Store").Page("Samsung Galaxy Tab 10.1").Exist(3) Then
+    Reporter.ReportEvent micPass,"Featured","Featured slide4 Successful"
+else
+    Reporter.ReportEvent  micFail,"Featured","Featured slide4 unsuccessful"
+End If
+
+Browser("Your Store").Back
+
+
+End Function
+
+Function addToCartButton()
+            
+      'Static Descriptive Programming      
+     Browser("name:=Your Store").Page("title:=Your Store").WebElement("name:=Add to Cart").WaitProperty "abs_x", true, 80000
+    Browser("name:=Your Store").Page("title:=Your Store").WebElement("abs_x:=296").Click
+    
+    Dim cart,browser1,page1
+       Set cart = Description.Create
+       Set browser1 = Description.Create
+       Set page1 = Description.Create
+       
+        browser1("name").value="Your Store"
+        page1("title").value="Your Store"
+       cart("abs_x").value="661"
+       
+       
+       Browser("Your Store").Page("Your Store").WebElement("Add to Cart").WaitProperty "abs_x", true, 80000
+       Browser(browser1).Page(page1).WebElement(cart).Click
+       
+       wait(3)
+       If Browser("Your Store").Page("Your Store").WebButton("Add to Cart_2").Exist(3) Then
+    Reporter.ReportEvent micPass,"addToCartButton","Add to cart Successful"
+	else
+    Reporter.ReportEvent  micFail,"addToCartButton","Add to cart unsuccessful"
+	End If
+       
+End Function
+
+Function addToWishlist()
+
+   
+	Browser("Your Store_2").Page("Your Store").WebElement("WebElement").Click
+Browser("Your Store_2").Page("Your Store").WebElement("WebElement_2").Check CheckPoint("WebElement")'checkpoint
+width_val =Browser("Your Store_2").Page("Your Store").WebElement("WebElement_3").GetROProperty("width")' getRO property
+ msgbox width_val
+Browser("Your Store_2").Page("Your Store").WebElement("WebElement_4").Click      
+      If Browser("Your Store_2").Page("Your Store").WebElement("WebElement_4").Exist(3) Then
+    Reporter.ReportEvent micPass,"addToWishlist","Add to wishlist Successful"
+	else
+    Reporter.ReportEvent  micFail,"addToWishlist","Add to wishlist unsuccessful"
+	End If
+wait (3)
+
+End Function
+
+Function addToComparebutton()
+ wait(3)
+	
+	Browser("Your Store_2").Page("Your Store").WebElement("WebElement_5").Click
+
+
+	  If Browser("Your Store_2").Page("Your Store").WebElement("WebElement_5").Exist(3) Then
+    Reporter.ReportEvent micPass,"addToComparebutton"," compare button clicked Successful"
+	else
+    Reporter.ReportEvent  micFail,"addToComparebutton","compare button clicked unsuccessful"
+	End If
+	
+End Function
+
+Function ProductComp()
+ wait(3)
+Browser("Your Store").Page("Your Store").Link("product comparison").Click
+
+  If Browser("Your Store").Page("Your Store").Link("product comparison").Exist(3) Then
+    Reporter.ReportEvent micPass,"ProductComp"," Product comparision page displayed Successful"
+	else
+    Reporter.ReportEvent  micFail,"ProductComp"," Product comparision page displayedunsuccessful"
+	End If
+	
+End Function
+Function Slideshow2()
+ wait(3)
+	Browser("Your Store").Page("Your Store").WebElement("WebElement").Click
+	 wait(3)
+Browser("Your Store").Page("Your Store").WebElement("WebElement_2").Click
+wait(3)
+
+End Function

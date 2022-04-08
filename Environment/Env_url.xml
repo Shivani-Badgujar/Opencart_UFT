@@ -1,0 +1,10 @@
+<Environment>
+	<Variable>
+		<Name>Browser_val</Name>
+		<Value><![CDATA[C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe]]></Value>
+	</Variable>
+	<Variable>
+		<Name>URL_val</Name>
+		<Value><![CDATA[https://demo.opencart.com/]]></Value>
+	</Variable>
+</Environment>
